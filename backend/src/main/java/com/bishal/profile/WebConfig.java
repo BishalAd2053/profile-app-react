@@ -22,6 +22,7 @@ public class WebConfig {
             "https://profile-app-react.vercel.app",
             "https://*.vercel.app"
         ));
+        cfg.setAllowedOriginPatterns(List.of("https://.*\\.vercel\\.app"));
         cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         cfg.setAllowedHeaders(List.of("*"));
         cfg.setAllowCredentials(true);
