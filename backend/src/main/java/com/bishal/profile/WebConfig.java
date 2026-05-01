@@ -18,7 +18,9 @@ public class WebConfig {
             "http://localhost",
             "http://localhost:8080",
             "http://localhost:8081",
-            "http://localhost:5173"
+            "http://localhost:5173",
+            "https://profile-app-react.vercel.app",
+            "https://*.vercel.app"
         ));
         cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         cfg.setAllowedHeaders(List.of("*"));
