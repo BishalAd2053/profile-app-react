@@ -7,12 +7,8 @@ services:
     plan: free
     envVars:
       - key: APP_PROFILE_DATA_PATH
-        value: /data/profile.json
+        value: /tmp/profile.json
       - key: APP_ADMIN_USERNAME
         value: admin
       - key: APP_ADMIN_PASSWORD
         generateValue: true
-    disk:
-      name: profile-data
-      mountPath: /data
-      sizeGB: 1
