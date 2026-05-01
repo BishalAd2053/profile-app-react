@@ -4,6 +4,7 @@ services:
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
     dockerContext: ./backend
+    plan: free
     envVars:
       - key: APP_PROFILE_DATA_PATH
         value: /data/profile.json
@@ -13,24 +14,7 @@ services:
         generateValue: true
     healthCheckPath: /actuator/health
     healthCheckInterval: 30
-    maxInstances: 1
     disk:
       name: profile-data
       mountPath: /data
       sizeGB: 1
-
-  - type: static_site
-    name: profile-app-frontend
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: ./frontend/dist
-    envVars:
-      - key: VITE_API_URL
-        fromService:
-          type: web
-          name: profile-app-backend
-          property: url
-    routes:
-      - path: /
-        destination: /index.html
-      - path: /*
-        destination: /index.html
