@@ -1,0 +1,74 @@
+{
+  "name": "Bishal Adhikari",
+  "title": "Full Stack Java Developer",
+  "location": "United States",
+  "bio": "Full-stack software engineer with 6+ years building enterprise applications, mostly in financial services. Currently at JPMorgan Chase on the Account Management platform — Spring Boot microservices for account creation, message transformation, and rule validation, with front-ends in React and Angular. I enjoy modernization work (Spring Boot 2.x → 3.5, Angular → React) and have been exploring Spring AI and MCP-based developer tooling lately.",
+  "email": "bishaladhikari348@gmail.com",
+  "avatarUrl": "/avatar.jpg",
+  "social": {
+    "github": "https://github.com/",
+    "linkedin": "https://www.linkedin.com/"
+  },
+  "skills": [
+    "Java",
+    "Spring Boot",
+    "Spring AI",
+    "React",
+    "Angular",
+    "TypeScript",
+    "Kafka",
+    "Microservices",
+    "Kubernetes",
+    "Docker",
+    "Oracle",
+    "AWS"
+  ],
+  "experience": [
+    {
+      "role": "Software Engineer / Full Stack Java Developer",
+      "company": "JPMorgan Chase & Co.",
+      "period": "Jun 2024 — Present",
+      "summary": "Build Spring Boot microservices for the Account Management System — account creation workflows, rule validation, message transformation, and straight-through processing. Lead Spring Boot 3.x modernization, contribute to Angular-to-React migration, and built a custom MCP server and Spring AI tooling to improve developer productivity."
+    },
+    {
+      "role": "Full Stack Java Developer",
+      "company": "Rail Inc",
+      "period": "Apr 2022 — Jun 2024",
+      "summary": "Developed Spring Boot microservices with REST APIs secured by OAuth2, Basic Auth, and API keys. Built Kafka producers/consumers for event-driven workflows and supported AWS/Kubernetes-based deployments."
+    },
+    {
+      "role": "Full Stack Java Developer",
+      "company": "Allstate",
+      "period": "Aug 2020 — Mar 2022",
+      "summary": "Built Spring Boot REST APIs and reusable Angular components, integrated with AWS (Lambda, S3, SQS, SNS, ECS) and Kafka. Used Splunk for release monitoring and JUnit/Mockito for test coverage."
+    },
+    {
+      "role": "Java Backend Developer",
+      "company": "Deloitte",
+      "period": "Nov 2018 — Jul 2020",
+      "summary": "Designed Spring MVC / Hibernate backends and Apache Camel integration routes. Worked across Oracle and MongoDB, and supported Jenkins / Docker / Kubernetes CI/CD."
+    }
+  ],
+  "projects": [
+    {
+      "name": "Personal Profile Site",
+      "description": "This site — React 18 + Spring Boot 3.3, with a three.js hero scene, admin editor, and full Docker Compose deployment.",
+      "tech": ["React", "Spring Boot", "Three.js", "Docker"]
+    },
+    {
+      "name": "Custom MCP Server",
+      "description": "Python MCP server with integrations for Jira, Figma, Bitbucket, and Kubernetes, giving engineers fast context inside their IDE.",
+      "tech": ["Python", "MCP", "Jira", "Kubernetes"]
+    },
+    {
+      "name": "Spring AI Developer Agent",
+      "description": "Hackathon project — an AI agent built with Spring AI that augments VS Code and IntelliJ copilot workflows for day-to-day engineering tasks.",
+      "tech": ["Spring AI", "Java", "Spring Boot"]
+    },
+    {
+      "name": "Spring Boot 3 Modernization",
+      "description": "Led migration of an enterprise account-management platform from Spring Boot 2.6 to 3.5 / Spring Framework 6, resolving dependency, compatibility, and test issues across services.",
+      "tech": ["Spring Boot", "Spring Framework 6", "Java"]
+    }
+  ]
+}
