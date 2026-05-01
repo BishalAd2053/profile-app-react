@@ -12,8 +12,8 @@ services:
         value: admin
       - key: APP_ADMIN_PASSWORD
         generateValue: true
-    healthCheckPath: /actuator/health
-    healthCheckInterval: 30
+    healthCheck:
+      path: /actuator/health
     disk:
       name: profile-data
       mountPath: /data
