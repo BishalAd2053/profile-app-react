@@ -12,8 +12,6 @@ services:
         value: admin
       - key: APP_ADMIN_PASSWORD
         generateValue: true
-    healthCheck:
-      path: /actuator/health
     disk:
       name: profile-data
       mountPath: /data
