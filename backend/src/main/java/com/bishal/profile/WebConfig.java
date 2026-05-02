@@ -14,15 +14,10 @@ public class WebConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration cfg = new CorsConfiguration();
-        cfg.setAllowedOrigins(List.of(
-            "http://localhost",
-            "http://localhost:8080",
-            "http://localhost:8081",
-            "http://localhost:5173",
-            "https://profile-app-react.vercel.app",
+        cfg.setAllowedOriginPatterns(List.of(
+            "http://localhost*",
             "https://*.vercel.app"
         ));
-        cfg.setAllowedOriginPatterns(List.of("https://.*\\.vercel\\.app"));
         cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         cfg.setAllowedHeaders(List.of("*"));
         cfg.setAllowCredentials(true);
