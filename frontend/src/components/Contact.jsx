@@ -1,48 +1,52 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const formRef = useRef();
   const [status, setStatus] = useState({ kind: 'idle' });
-
-  const update = (k) => (e) => setForm({ ...form, [k]: e.target.value });
 
   const submit = async (e) => {
     e.preventDefault();
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      setStatus({ kind: 'error', message: 'EmailJS not configured' });
+      return;
+    }
     setStatus({ kind: 'sending' });
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, {
+        publicKey: PUBLIC_KEY,
       });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setStatus({ kind: 'sent' });
-      setForm({ name: '', email: '', message: '' });
+      formRef.current.reset();
     } catch (err) {
-      setStatus({ kind: 'error', message: err.message });
+      setStatus({ kind: 'error', message: err.text || 'Failed to send' });
     }
   };
 
   return (
     <section className="card">
       <h2>Contact</h2>
-      <form className="contact-form" onSubmit={submit}>
+      <form className="contact-form" ref={formRef} onSubmit={submit}>
         <label>
           <span>Name</span>
-          <input type="text" required value={form.name} onChange={update('name')} />
+          <input type="text" name="from_name" required />
         </label>
         <label>
           <span>Email</span>
-          <input type="email" required value={form.email} onChange={update('email')} />
+          <input type="email" name="from_email" required />
         </label>
         <label>
           <span>Message</span>
-          <textarea required rows={4} value={form.message} onChange={update('message')} />
+          <textarea name="message" required rows={4} />
         </label>
         <button type="submit" disabled={status.kind === 'sending'}>
           {status.kind === 'sending' ? 'Sending…' : 'Send'}
         </button>
-        {status.kind === 'sent' && <p className="success">Thanks — message received.</p>}
+        {status.kind === 'sent' && <p className="success">Thanks — message sent!</p>}
         {status.kind === 'error' && <p className="error">Error: {status.message}</p>}
       </form>
     </section>

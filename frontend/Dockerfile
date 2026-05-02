@@ -8,6 +8,7 @@ RUN npm install --no-audit --no-fund
 COPY index.html vite.config.js ./
 COPY src ./src
 COPY public ./public
+COPY .env* ./
 RUN npm run build
 
 # --- Runtime stage ---

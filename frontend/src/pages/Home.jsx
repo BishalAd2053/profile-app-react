@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Hero3D from '../components/Hero3D.jsx';
 import Header from '../components/Header.jsx';
 import About from '../components/About.jsx';
 import Skills from '../components/Skills.jsx';
@@ -38,6 +39,7 @@ export default function Home() {
 
   return (
     <>
+      <div className="global-canvas"><Hero3D /></div>
       <Header profile={profile} />
       <main className="container">
         <About profile={profile} />
