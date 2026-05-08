@@ -26,6 +26,9 @@ public class ContactController {
     @Value("${app.emailjs.public-key:}")
     private String publicKey;
 
+    @Value("${app.emailjs.private-key:}")
+    private String privateKey;
+
     private final RestTemplate restTemplate = new RestTemplate();
 
     @PostMapping("/contact")
@@ -39,6 +42,7 @@ public class ContactController {
             "service_id", serviceId,
             "template_id", templateId,
             "user_id", publicKey,
+            "accessToken", privateKey,
             "template_params", Map.of(
                 "from_name", req.name(),
                 "from_email", req.email(),
