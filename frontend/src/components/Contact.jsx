@@ -1,9 +1,6 @@
 import { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
 
-const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 export default function Contact() {
   const formRef = useRef();
@@ -11,19 +8,31 @@ export default function Contact() {
 
   const submit = async (e) => {
     e.preventDefault();
-    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-      setStatus({ kind: 'error', message: 'EmailJS not configured' });
-      return;
-    }
     setStatus({ kind: 'sending' });
+
+    const formData = new FormData(formRef.current);
+    const payload = {
+      name: formData.get('from_name'),
+      email: formData.get('from_email'),
+      message: formData.get('message'),
+    };
+
     try {
-      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, {
-        publicKey: PUBLIC_KEY,
+      const res = await fetch(`${API_BASE}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || `HTTP ${res.status}`);
+      }
+
       setStatus({ kind: 'sent' });
       formRef.current.reset();
     } catch (err) {
-      setStatus({ kind: 'error', message: err.text || 'Failed to send' });
+      setStatus({ kind: 'error', message: err.message || 'Failed to send' });
     }
   };
 
