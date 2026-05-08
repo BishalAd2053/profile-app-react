@@ -7,6 +7,7 @@ import Skills from '../components/Skills.jsx';
 import Experience from '../components/Experience.jsx';
 import Projects from '../components/Projects.jsx';
 import Contact from '../components/Contact.jsx';
+import Chatbot from '../components/Chatbot.jsx';
 import { getProfile } from '../lib/api.js';
 
 export default function Home() {
@@ -48,6 +49,7 @@ export default function Home() {
         <Projects projects={profile.projects} />
         <Contact />
       </main>
+      <Chatbot />
       <footer className="footer">
         <p>
           © {new Date().getFullYear()} {profile.name}. Built with React + Spring Boot.

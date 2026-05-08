@@ -1,13 +1,13 @@
 {
   "name": "Bishal Adhikari",
   "title": "Full Stack Java Developer",
-  "location": "United States",
+  "location": "Virgina, United States",
   "bio": "Full-stack software engineer with 6+ years building enterprise applications, mostly in financial services. Currently at JPMorgan Chase on the Account Management platform — Spring Boot microservices for account creation, message transformation, and rule validation, with front-ends in React and Angular. I enjoy modernization work (Spring Boot 2.x → 3.5, Angular → React) and have been exploring Spring AI and MCP-based developer tooling lately.",
   "email": "bishaladhikari348@gmail.com",
   "avatarUrl": "/avatar.jpg",
   "social": {
-    "github": "https://github.com/",
-    "linkedin": "https://www.linkedin.com/"
+    "github": "https://github.com/BishalAd2053",
+    "linkedin": "https://www.linkedin.com/in/bishal-adhikari-a478a4305"
   },
   "skills": [
     "Java",
