@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaRobot, FaTimes, FaPaperPlane } from 'react-icons/fa';
 
-const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY;
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 const SYSTEM_PROMPT = `You are Bishal's AI assistant embedded on his personal portfolio website. You answer questions about Bishal Adhikari — his background, skills, experience, and projects. Be friendly, concise, and professional.
 
@@ -74,14 +74,9 @@ export default function Chatbot() {
         ...updatedMessages.map(m => ({ role: m.role, content: m.content }))
       ];
 
-      const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      const res = await fetch(`${API_BASE}/chat`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-          'HTTP-Referer': window.location.origin,
-          'X-Title': 'Bishal Portfolio Chatbot'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
           messages: apiMessages,

@@ -10,6 +10,7 @@ services:
       APP_PROFILE_DATA_PATH: /data/profile.json
       APP_ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
       APP_ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin}
+      APP_OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
     volumes:
       - profile-data:/data
     expose:

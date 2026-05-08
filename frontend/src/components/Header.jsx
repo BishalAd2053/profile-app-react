@@ -7,7 +7,7 @@ export default function Header({ profile }) {
 
   return (
     <header className="hero">
-      <div className="container hero-inner">
+      <div className="hero-inner">
         <div className="hero-content">
           <div className="hero-left">
             <div className="avatar">
@@ -27,7 +27,7 @@ export default function Header({ profile }) {
               <p className="location">{profile.location}</p>
             </div>
           </div>
-          <div className="social social-right">
+          <div className="hero-section social social-right">
             {profile.social?.github && (
               <a href={profile.social.github} target="_blank" rel="noreferrer" title="GitHub">
                 <FaGithub />
